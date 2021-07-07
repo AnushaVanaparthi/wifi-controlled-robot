@@ -1,8 +1,8 @@
 // Obstacle avoidance algorithm
 #include<ESP8266WiFi.h >
-const char* ssid="Anusha's One plus!";
+const char* ssid="Anusha's One plus!"; /* ssid and password of my mobile to connect the node mcu to my mobile */
 const char* password="Thengo!!!!";
-#define led D0
+#define led D0 /* defining the pins with its functions*/
 #define ML D1
 #define MR D3
 
@@ -14,13 +14,13 @@ const char* password="Thengo!!!!";
 #define echopin D6
 #define device_pin D4
 
-WiFiServer server(80);
+WiFiServer server(80); /*server created*/
 int flag;
 
 
 void setup() {
   // put your setup code here, to run once:
-pinMode(led,OUTPUT);
+pinMode(led,OUTPUT); /*assigning function to the pin whether it is input or output*/
 pinMode(ML,OUTPUT);
 pinMode(MR,OUTPUT);
 
@@ -48,11 +48,6 @@ Serial.println(ssid);
 
 WiFi.begin(ssid,password);
 
-/*IPAddress ip(192,168,1,254);
-IPAddress gateway(192,168,1,1);
-IPAddress subnet(255,255,255,0);
-WiFi.config(ip,gateway,subnet);
-delay(5000);*/
 while(WiFi.status() !=WL_CONNECTED){
   delay(100);
   Serial.print(".");
@@ -67,7 +62,7 @@ Serial.print("Use this URL to connect");
 Serial.print("http://");
 Serial.print(WiFi.localIP());
 Serial.println("/");
-}
+} /*use this url in the app to connect the mobile to nodemcu*/
 
 
 int getdistance_cm() {
@@ -205,20 +200,3 @@ if(request.indexOf("/device_off") != -1) {
 }
 
 
-/*if(distance_cm > 30) {
-  //forward();
-  forward();
-    Serial.print(" Moving Forward and   ");Serial.print("distance = ");Serial.println(distance_cm);
-
-}
-else {
-  Serial.print(" Obstacle Detected and   ");Serial.print("distance = ");Serial.println(distance_cm);
-  
-  stop_now();
-  delay(1000);
-  left_turn();
-  delay(2000);
-  stop_now();
-  
-}*/
-}
